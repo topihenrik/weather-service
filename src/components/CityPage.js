@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
+import { Box } from "@mui/system";
+import { Button, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
+
 import meteoService from "../services/meteoService";
 import citiesData from "../data/cities.json";
 import parseUtil from "../utils/parseUtil";
-import WeatherInfo from "./WeatherInfo";
-import ForecastWeather from "./ForecastWeather";
-import { Box } from "@mui/system";
-import { Button, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
+import CurrentWeatherCard from "./CurrentWeatherCard";
+import DailyWeatherList from "./DailyWeatherList";
 
 const CityPage = () => {
     const [parsedWeatherData, setParsedWeatherData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [timeframe, setTimeframe] = useState("daily");
+    const [timeframe, setTimeframe] = useState("current");
     const city_name = useParams().name;
     const city = citiesData.find(city => city.name === city_name);
-
 
     const handleTimeframeChange = (event) => {
         setTimeframe(event.target.value);
@@ -40,18 +41,12 @@ const CityPage = () => {
     return(
         <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "32px", margin: "32px" }}>
             <Typography variant="h5" sx={{ textTransform: "capitalize", margin: { sm: "32px 0", md: "64px 0" } }}>{city_name}</Typography>
-            <Typography>
-                {timeframe === "daily"
-                    ? "Daily Weather"
-                    : "Current Weather"
-                }
-            </Typography>
-            {timeframe === "daily"
-                ? <WeatherInfo
-                    date={parsedWeatherData.current_weather.date}
+            {timeframe === "current"
+                ? <CurrentWeatherCard
+                    time={parsedWeatherData.current_weather.time}
                     temperature={parsedWeatherData.current_weather.temperature}
                     weathercode={parsedWeatherData.current_weather.weathercode}/>
-                : <ForecastWeather
+                : <DailyWeatherList
                     dailyData={parsedWeatherData.daily_weather}/>
             }
             <Box sx={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "center" }}>
@@ -64,7 +59,7 @@ const CityPage = () => {
                     <ToggleButton value="current">Current</ToggleButton>
                     <ToggleButton value="daily">Daily</ToggleButton>
                 </ToggleButtonGroup>
-                <Button variant="outlined" onClick={() => { history.back(); }}>
+                <Button variant="outlined" component={Link} to="/">
                     Back
                 </Button>
             </Box>

@@ -4,7 +4,7 @@ const baseUrl = "https://api.open-meteo.com/v1";
 const getWeather = async ({ coordinates }) => {
     const urlParams = new URLSearchParams(
         {
-            timezone: "Europe/Berlin",
+            timezone: "auto",
             latitude: coordinates.latitude,
             longitude: coordinates.longitude,
             current_weather: true,

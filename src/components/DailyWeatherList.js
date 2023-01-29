@@ -1,15 +1,16 @@
 import { Box } from "@mui/system";
-import WeatherInfo from "./WeatherInfo";
+import DailyWeatherCard from "./DailyWeatherCard";
 
-const ForecastWeather = ({ dailyData }) => {
+const DailyWeatherList = ({ dailyData }) => {
     return(
         <Box sx={{ display: "flex", gap: { xs: "16px", md: "64px" }, flexDirection: { xs: "column", md: "row" } }}>
             {dailyData.map(day => {
                 return (
-                    <WeatherInfo
+                    <DailyWeatherCard
                         key={crypto.randomUUID()}
                         date={day.date}
-                        temperature={day.temperature}
+                        max_temperature={day.max_temperature}
+                        min_temperature={day.min_temperature}
                         weathercode={day.weathercode}
                     />
                 );
@@ -18,4 +19,4 @@ const ForecastWeather = ({ dailyData }) => {
     );
 };
 
-export default ForecastWeather;
+export default DailyWeatherList;

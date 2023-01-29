@@ -23,6 +23,10 @@ module.exports = {
             "error",
             4
         ],
+        "no-multiple-empty-lines": [
+            "error",
+            { "max": 1, "maxEOF": 0 }
+        ],
         "linebreak-style": [
             "error",
             "windows"

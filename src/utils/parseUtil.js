@@ -1,20 +1,20 @@
 import { DateTime } from "luxon";
 
-const FORECAST_DAYS = 3;
-
 const weatherData = (data) => {
+    const FORECAST_DAYS = 3;
     const result = {};
     const daily_weather = [];
     for (let i=0;i<FORECAST_DAYS;i++) {
         const newDay = {
             date: DateTime.fromISO(data.daily.time[i]).toFormat("d.L."),
-            temperature: Math.round((data.daily.temperature_2m_max[i] + data.daily.temperature_2m_min[i]) / 2),
+            max_temperature: Math.round(data.daily.temperature_2m_max[i]),
+            min_temperature: Math.round(data.daily.temperature_2m_min[i]),
             weathercode: data.daily.weathercode[i]
         };
         daily_weather.push(newDay);
     }
     const current_weather = {
-        date: DateTime.fromISO(data.current_weather.time).toFormat("d.L."),
+        time: DateTime.fromISO(data.current_weather.time).toFormat("HH.mm"),
         temperature: Math.round(data.current_weather.temperature),
         weathercode: data.current_weather.weathercode,
     };

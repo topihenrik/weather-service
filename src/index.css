@@ -22,7 +22,7 @@ html {
 
 @media (max-width: 600px) {
     .weather-icon {
-        width: 64px;
-        height: 64px;
+        width: 96px;
+        height: 96px;
     }
 }
