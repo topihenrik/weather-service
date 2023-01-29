@@ -39,8 +39,8 @@ const CityPage = () => {
     if (loading) return null;
 
     return(
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "32px", margin: "32px" }}>
-            <Typography variant="h5" sx={{ textTransform: "capitalize", margin: { sm: "32px 0", md: "64px 0" } }}>{city_name}</Typography>
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "32px", margin: "32px", paddingBottom: "30%", boxSizing: "border-box" }}>
+            <Typography variant="h5" sx={{ textTransform: "capitalize", margin: { xs: "32px 0", sm: "64px 0" } }}>{city_name}</Typography>
             {timeframe === "current"
                 ? <CurrentWeatherCard
                     time={parsedWeatherData.current_weather.time}

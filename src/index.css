@@ -2,7 +2,6 @@ html, body, #root {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    height: fit-content;
 }
 
 html {
@@ -16,13 +15,17 @@ html {
 }
 
 .weather-icon {
-    width: 128px;
-    height: 128px;
+    width: 96px;
+    height: 96px;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 600px) {
     .weather-icon {
-        width: 96px;
-        height: 96px;
+        width: 128px;
+        height: 128px;
+    }
+
+    html, body, #root {
+        height: 100%;
     }
 }

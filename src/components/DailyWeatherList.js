@@ -3,7 +3,7 @@ import DailyWeatherCard from "./DailyWeatherCard";
 
 const DailyWeatherList = ({ dailyData }) => {
     return(
-        <Box sx={{ display: "flex", gap: { xs: "16px", md: "64px" }, flexDirection: { xs: "column", md: "row" } }}>
+        <Box sx={{ display: "flex", gap: { xs: "16px", sm: "32px" }, flexDirection: { xs: "column", sm: "row" } }}>
             {dailyData.map(day => {
                 return (
                     <DailyWeatherCard
