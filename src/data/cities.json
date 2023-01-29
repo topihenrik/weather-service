@@ -1,0 +1,23 @@
+[
+    {
+        "name": "helsinki",
+        "coordinates": {
+            "latitude": 60.17,
+            "longitude": 24.95
+        }
+    },
+    {
+        "name": "turku",
+        "coordinates": {
+            "latitude": 60.45,
+            "longitude": 22.28
+        }
+    },
+    {
+        "name": "tampere",
+        "coordinates": {
+            "latitude": 61.50,
+            "longitude": 23.80
+        }
+    }
+]
